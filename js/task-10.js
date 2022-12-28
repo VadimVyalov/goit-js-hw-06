@@ -52,10 +52,13 @@ refs.buttonCreateClick.addEventListener("click", () => {
     : 0;
   if (!amountBox) return;
 
-  refs.boxesEl.append(...createBoxes(amountBox));
-  // refs.boxesEl.insertAdjacentHTML("beforeend", createBoxes(amountBox).join(""));
+  refs.boxesEl.append(...createBoxes(amountBox)); //! Варіант 1
+  // refs.boxesEl.insertAdjacentHTML("beforeend", createBoxes(amountBox).join("")); //! Варіант 2
 });
 
 refs.buttonDestroyClick.addEventListener("click", () => {
-  refs.boxesEl.innerHTML = "";
+  while (refs.boxesEl.firstChild) {
+    refs.boxesEl.removeChild(refs.boxesEl.firstChild); //! Варіант 1
+  }
+  // refs.boxesEl.innerHTML = ""; //! Варіант 2
 });
